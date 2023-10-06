@@ -1,5 +1,5 @@
 # Evernode documentation
-Evernode documentation is built with [Sphinx](https://www.sphinx-doc.org/) and readthedocs(https://about.readthedocs.com/). Documentation is done with [Markdown](https://www.markdownguide.org/) and [reStructuredText](https://docutils.sourceforge.io/rst.html). The documentation source files are in [docs/source](docs/source)
+Evernode documentation is built with [Sphinx](https://www.sphinx-doc.org/) and [readthedocs](https://about.readthedocs.com/). Documentation is done with [Markdown](https://www.markdownguide.org/) and [reStructuredText](https://docutils.sourceforge.io/rst.html). The documentation source files are in [docs/source](docs/source)
 
 ## Local setup
 

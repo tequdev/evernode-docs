@@ -5,4 +5,5 @@ Sashimono is Evernode's host management software. It enables your host to partic
 2. Provisions HotPocket smart contract instances using host's hardware resources.
 3. Manages SSL certificates if you have opted-in for Let's Encrypt SSL integration.
 
-
+- [Sashimono architecture](http://blog.geveo.com/Sashimono-Designing-a-multi-tenant-dApp-hosting-platform)
+- [Installing sashimono](http://localhost:8080/hosts/evernode-host.html)

@@ -111,7 +111,7 @@ An example `hp.cfg.override` file for a NodeJs application (the HotPocket develo
 ### Inspect contract files of all nodes
 
 You can inspect the files of all the nodes of the cluster using Docker Desktop.
-<img height="500" alt="image" src="https://user-images.githubusercontent.com/33562092/236630735-f39a3da0-78ca-4e91-9ef0-5c6400bd5bae.png" />
+![hpdevkit volume](../../../assets/hpdevkit-vol.png)
 
 ## Environment variables
 

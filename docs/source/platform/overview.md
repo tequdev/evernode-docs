@@ -4,11 +4,11 @@
 
 We can think of an app as something which can process **Inputs** and produce **Outputs** while reading/updating **State**. Many traditional apps fall into this category and they can be implemented with many programming languages and platforms on the market.
 
-<img width="227" alt="image" src="https://user-images.githubusercontent.com/33562092/218354996-3b7315e3-b0dc-449f-9e17-14a02d16f83c.png">
+![Structure of a dapp](../assets/dapp.png)
 
 We can make a **decentralized** app (dApp a.k.a smart contract) by making multiple instances of the app work together in unison to process inputs, state and produce outputs. There is no single (central) party to coordinate instances. All app instances are equal and perform the same job. The app instances verify with each other that what they are processing is consistent and similar across all instances so they individually produce the same result.
 
-<img width="379" alt="image" src="https://user-images.githubusercontent.com/33562092/218356526-275fb1f6-1459-4412-9d38-1ec5931f10eb.png">
+![A dapp cluster](../assets/dapp-cluster.png)
 
 The process of communicating and verifying each other's behaviour and agreeing upon the correct results is called **Consensus**. There is no leader/coordinator to conduct this process. Every app instance must perform this activity invidividually. HotPocket provides this ability to your app in order to make it a "decentralized" app.
 
@@ -27,7 +27,7 @@ The process of communicating and verifying each other's behaviour and agreeing u
   - You can use the filesystem (or file-based databases) for data persistence. HotPocket treats the filesystem as "state".
   - You have full control over raw binary data of user Inputs and Outputs.
 
-<img width="421" alt="image" src="https://user-images.githubusercontent.com/33562092/218616038-001a3b46-4aed-4a3e-b410-ee0b2e8930b4.png">
+![HotPocket consensus](../assets/hotpocket-consensus.png)
 
 ## Decentralized infrastructure
 
@@ -43,6 +43,6 @@ Evernode uses a set of [XRPL hooks](hooks/overview) to coordinate its decentrali
 
 The following diagram shows how different HotPocket dApps would be distributed across many Evernode hosts. Each dApp forms its own mesh network.
 
-<img width="436" alt="image" src="https://user-images.githubusercontent.com/33562092/218644541-ff77330f-67cf-4962-96f9-e35c6d3e1c33.png">
+![HotPocket consensus](../assets/evernode-dapps.png)
 
 See [here](../hosts/evernode-host.md) on how to become an Evernode Host.
