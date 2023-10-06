@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Evernode Documentation'
+project = 'Evernode'
 copyright = '2023, evernode.org'
 author = 'EvernodeDev'
 
