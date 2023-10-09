@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'Evernode'
-copyright = '2023, evernode.org'
-author = 'EvernodeDev'
+copyright = '2023, Evernode Labs Pty Ltd'
+author = 'Evernode Labs Pty Ltd'
 
 release = ''
 version = ''
