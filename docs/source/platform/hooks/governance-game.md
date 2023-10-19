@@ -29,7 +29,7 @@ There are two classes of participants in the Governance Game.
 - Proposer must collateralize their Proposal with 1 Moment’s worth of EVR rewards.
 - The hooks which bear the proposed hashes must be deployed to some existing XRPL account.
 
-### Dud Host Removal
+#### Dud Host Candidate
 - Dud host removal Proposal represents XRP Address of the malfunctioning host to be removed from the platform. 
 - Any Participant can submit this kind of proposal. 
 - Proposer must collateralize their Proposal with 25% of ongoing epoch reward pool worth of EVR rewards.
