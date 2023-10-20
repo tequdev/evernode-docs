@@ -4,7 +4,6 @@
 
 Manages the governance game.
 
-
 ### Propose
 - Hosts or the Foundation can propose governance candidates. With this proposal, the proposer should provide the hook hashes and pay an EVR amount equal to the current moment's reward quota.
 - If a proposal is purged (life period has passed or another proposal is already approved), the proposer will lose the EVR stake spent on the proposal.
