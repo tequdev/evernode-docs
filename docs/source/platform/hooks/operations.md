@@ -1,8 +1,8 @@
 # Operations
 
 ## Governance Hook
+Manages the governance game.
 
-Manages host registrations and issuance of registration tokens.
 
 ### Propose
 - Hosts or the Foundation can propose governance candidates. With this proposal, the proposer should provide the hook hashes and pay an EVR amount equal to the current moment's reward quota.
@@ -14,7 +14,7 @@ Manages host registrations and issuance of registration tokens.
 - In the case of proposal withdrawal, the proposer will receive only 50% of the EVR stake spent on the proposal.
 
 ### Change Governance Mode
-- In Piloted mode, the Foundation can vote to change the mode to Auto-Piloted.
+- In Piloted mode, the Foundation has the authority to change the governance mode to Co-Piloted mode or to Auto-Piloted mode.
 
 ### Report Dud Host
 - Hosts or the Foundation can report dud hosts. In this case, the proposer should provide the XRP address of the dud host and pay an EVR amount equal to 25% of the current moment's reward quota.
@@ -35,7 +35,7 @@ Manages heartbeats and rewards.
 
 ## Registry Hook
 
-Manages the governance game.
+Manages host registrations and issuance of registration tokens.
 
 ### Register Host
 - A host registers in the Evernode network by sending its host specs and information via this request. The host must pay an EVR amount as a registration fee. Five EVRs from the registration fee will be kept in the foundation wallet, and the rest will be staked.
