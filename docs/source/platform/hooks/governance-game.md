@@ -1,5 +1,7 @@
 # Governance game
 
+Governance Game allows eligible participants in the Evernode network to propose and vote on the Evernode changes. These proposals will get accepted or purged according to a predetermined rule-set on received votes.
+
 ## Participants
 
 There are two classes of participants in the Governance Game.
@@ -9,14 +11,28 @@ There are two classes of participants in the Governance Game.
 
 ## Governance
 
-The Participant can submit a Proposal with new Hook hashes of above mentioned 3 Hooks. Once that Proposal is continuously supported by 80% of eligible Participants for 2 weeks, the existing hooks will be replaced by the proposed hooks.
+### Types of proposals
+
+- Proposal for a New Hook Candidate (All three hooks will be affected).
+  - The Participant can submit a Proposal with new Hook hashes of above mentioned 3 Hooks. Once that Proposal is continuously supported by 80% of eligible Participants for 2 weeks, the existing hooks will be replaced by the proposed hooks.
+- Proposal for removing a Dud Host.
+  - The Participant can submit a Proposal with the XRP address of the host which is determined as a dud.
+- Proposal for changing the governance mode. 
+  - This proposal type will be created and handled automatically inside the hooks according to the current governing mode.
 
 ### Submitting a proposal
 
-- A Proposal represents the hashes `<governance_hooks_hash><registry_hook_hash><heartbeat_hook_hash>` of the new Hook to replace an existing Hook.
+#### New Hook Candidate
+
+- New Hook candidate Proposal represents the hashes `<governance_hooks_hash><registry_hook_hash><heartbeat_hook_hash>` of the new Hook to replace an existing Hook.
 - Any Participant can submit a Proposal for a new Hook.
-- Proposer must collateralize their Proposal with 1 Moment’s worth of EVR rewards.
+- Proposer must collateralize their Proposal with EVR rewards equivalent to the current moment's reward quota.
 - The hooks which bear the proposed hashes must be deployed to some existing XRPL account.
+
+#### Dud Host Candidate
+- Dud host removal Proposal represents XRP Address of the malfunctioning host to be removed from the platform. 
+- Any Participant can submit this kind of proposal. 
+- Proposer must collateralize their Proposal with EVR rewards worth 25% of the current moment's reward quota.
 
 ### Withdrawing a Proposal
 
