@@ -1,6 +1,7 @@
 # Operations
 
 ## Governance Hook
+
 Manages the governance game.
 
 
