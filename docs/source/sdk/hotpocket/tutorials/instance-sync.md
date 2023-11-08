@@ -28,7 +28,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 The colors contract is using nodejs "process" module to print the command line arguments passed to the app. It is also stating that the node executing the contract is a part of the UNL by checking whether the node's public key is included in the UNL public key list.

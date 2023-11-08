@@ -41,7 +41,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 Let's update the contract to save user messages to a file and include total no. of messages in the reply.

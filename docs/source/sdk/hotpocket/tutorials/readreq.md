@@ -4,46 +4,80 @@ Read requests are a user input/output mechanism that operates on a single HotPoc
 
 **Security consideration:** Read requests bypass consensus and are processed on a single node which could be compromised. You should not use read requests to retrieve sensitive data that could be manipulated by a single compromised node. It offers a peformance boost at the expense of security and consistency so you should use this feature with care.
 
-## Smart contract readonly mode
+## Smart contract mode
 
-Let's modify our smart contract with following `if..else` block to support read requests.
+Let's modify our code with following `if..else` block to support for both **consensus** and **read_req** mode handlers.
 
 ```javascript
-if (ctx.readonly) {
-  // Code that only executes in readonly invocations of the contract.
-  // In this mode, we do not have write access to the filesystem.
-} else {
-  // Save the input to a user-specific file name.
-  const filename = `${user.publicKey}.log`;
-  await fs.appendFile(filename, message + "\n");
+const HotPocket = require("hotpocket-nodejs-contract");
+const process = require("process");
 
-  // Get total no. of messages sent by user so far.
-  const allMessages = (await fs.readFile(filename)).toString();
-  const total = allMessages.split("\n").length - 1;
+const mycontract = async (ctx, readonly = false) => {
+  if (readonly) {
+    // Code that only executes in readonly invocations of the contract.
+    // In this mode, we do not have write access to the filesystem.
+  } else {
+    // Save the input to a user-specific file name.
+    const filename = `${user.publicKey}.log`;
+    await fs.appendFile(filename, message + "\n");
 
-  user.send(`You said '${message}'`);
+    // Get total no. of messages sent by user so far.
+    const allMessages = (await fs.readFile(filename)).toString();
+    const total = allMessages.split("\n").length - 1;
 
-  // Include total message count in the reply.
-  user.send(`Thanks for talking to me ${total} times`);
-}
+    user.send(`You said '${message}'`);
+
+    // Include total message count in the reply.
+    user.send(`Thanks for talking to me ${total} times`);
+  }
+};
+
+const hpc = new HotPocket.Contract();
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { await mycontract(ctx, true); }
+});
 ```
 
-Because any processing done by the smart contract for read requests are not subjected to consensus, HotPocket invokes the smart contract in **readonly** mode and indicates that fact with the `ctx.readonly` field. We have moved the previous user-input-processing code we had, into the 'non readonly' code portion.
+Because any processing done by the smart contract on **read_req** mode are not subjected to consensus. We have moved the previous user-input-processing code we had, into the 'non readonly' code portion.
 
 Let's serve some useful data for a read request.
 
 ```javascript
-if (ctx.readonly) {
-  if (message === "count") {
-    // Reply the user with the no. of .log files.
-    const files = await fs.readdir(".");
-    const logFileCount = files.filter((f) => f.endsWith(".log")).length;
-    user.send(logFileCount.toString());
+const mycontract = async (ctx, readonly = false) => {
+  if (readonly) {
+    if (message === "count") {
+      // Reply the user with the no. of .log files.
+      const files = await fs.readdir(".");
+      const logFileCount = files.filter((f) => f.endsWith(".log")).length;
+      user.send(logFileCount.toString());
+    }
+  } else {
+    // Save the input to a user-specific file name.
+    const filename = `${user.publicKey}.log`;
+    await fs.appendFile(filename, message + "\n");
+
+    // Get total no. of messages sent by user so far.
+    const allMessages = (await fs.readFile(filename)).toString();
+    const total = allMessages.split("\n").length - 1;
+
+    user.send(`You said '${message}'`);
+
+    // Include total message count in the reply.
+    user.send(`Thanks for talking to me ${total} times`);
   }
-}
+};
+
+const hpc = new HotPocket.Contract();
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { await mycontract(ctx, true); }
+});
 ```
 
-In the above code, if the smart contract receives an input with the string 'count' in readonly mode, it will reply with the total number of log files it has persisted so far.
+In the above code, if the smart contract receives an input with the string 'count' in readonly mode execution, it will reply with the total number of log files it has persisted so far.
 
 ## Submit read request
 

@@ -11,7 +11,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 ## contractId
@@ -50,9 +54,9 @@ const client = await HotPocket.createClient(
 );
 ```
 
-## readonly
+## mode
 
-A boolean indicating whether the contract is being invoked due to a consensus execution or a [read request](readreq). In readonly mode, the filesystem is readonly and represents the last consensus state. At any given time, multiple readonly executions of the contract can happen. However only one consensus execution will happen at any given time.
+A string **(consensus|consensus_fallback|read_req)** indicating the mode which the contract is being invoked. Mode will be **consensus** if invoked due to a consensus execution. Mode will be **consensus_fallback** if invoked due to inability of reaching the consensus. Mode will be **read_req** if invoked due to a [read request](readreq). In **read_req** mode, the filesystem is readonly. In both **consensus_fallback** and **read_req** modes filesystem represents the last consensus state. At any given time, multiple **read_req** mode executions of the contract can happen. However only one **consensus** or **consensus_fallback** mode execution will happen at any given time.
 
 ## timestamp
 
@@ -69,3 +73,7 @@ Contains information about the nodes that participate in consensus. Via this you
 ## lclSeqNo and lclHash
 
 This is the last closed ledger sequence number and the hexadecimal hash. During consensus, the ledger data is salted with an agreed-upon random value. Therefore, you could use the lcl hash as a deterministic random seed for your contract.
+
+# non_consensus_rounds
+
+This is the number of consecutive rounds HotPocket missed the consensus (Number of times contract executed on **consensus_fallback** mode), This will be only available in contract **consensus_fallback** mode.

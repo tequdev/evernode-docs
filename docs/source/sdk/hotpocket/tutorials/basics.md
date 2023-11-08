@@ -20,7 +20,7 @@ Generate a blank dapp project with `hpdevkit gen nodejs blank-contract mycontrac
 
 ### src/mycontract.js
 
-This is the entry point of your dapp. As shown below, `hpc.init()` takes care of registering the provided function as the entry point to your dapp and setting up the communication channels between your nodejs application and HotPocket.
+This is the entry point of your dapp. As shown below, `hpc.init()` takes care of registering the provided functions for each contract execution mode as the entry point to your dapp and setting up the communication channels between your nodejs application and HotPocket. Initially the template would only setup the handler for **consensus** mode execution. You can implement the **consensus_fallback** and **read_req** handlers as your requirement.
 
 ```javascript
 const HotPocket = require("hotpocket-nodejs-contract");
@@ -31,7 +31,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 During normal operation, HotPocket will invoke your application and pass the relevant information into the `ctx` argument of your contract function. This is called the 'contract context' which contains information about that execution of the contract. We will explore this later in this guide.
@@ -93,10 +97,15 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
-`hpc.init()` will cause HotPocket to invoke `mycontract` function whenever it creates a ledger. HotPocket will pass the `ctx` argument containing any information that it believes to be 'universal' among all the HotPocket nodes in the cluster. HotPocket will not invoke your application/function if it could not reach consensus (hence, no ledger was created) during a particular consensus round.
+`hpc.init()` will cause HotPocket to invoke the given handlers for each mode, Since this example has assigned `mycontract` as **consensus** execution mode handler it will execute the function whenever it creates a ledger. And If you have given a handler for **consensus_fallback** mode execution, It would execute the handler whenever it can't create a ledger due to a consensus failure. Also if there's a handler assigned for **read_req** mode, That handler will be executed whenever a read request is received. HotPocket will pass the `ctx` argument containing any information that it believes to be 'universal' among all the HotPocket nodes in the cluster.
+Furthermore HotPocket will execute application/function in **consensus** mode only if it reach consensus (hence, no ledger was created) during a particular consensus round and **consensus_fallback** and **read_req** mode will be executed even without reaching consensus.
 
 ## Update the contract logic
 
@@ -112,7 +121,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 Now, run `npm start` again. This will rebuild and redeploy your contract and show the console output.
@@ -222,7 +235,11 @@ const mycontract = async (ctx) => {
 };
 
 const hpc = new HotPocket.Contract();
-hpc.init(mycontract);
+hpc.init({
+    "consensus": async (ctx) => { await mycontract(ctx); },
+    "consensus_fallback": async (ctx) => { },
+    "read_req": async (ctx) => { }
+});
 ```
 
 The above code is iterating through all connected users, and printing each user's 'public key'. User's public key can be used to uniquely identify a user cryptographically.

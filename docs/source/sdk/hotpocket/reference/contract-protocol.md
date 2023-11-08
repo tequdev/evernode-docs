@@ -12,10 +12,18 @@ The HotPocket [dapp](../../../platform/hotpocket/overview.md#dapp) is spawned as
 
 When implementing a dapp on the HotPocket consensus engine, you need to consider the following basic components of the HotPocket dapp:
 
-- [Contract execution context](#contract-execution-context)
-- [Control channel](#control-channel)
-- [Users/Clients channel](#usersclients-channel)
-- [NPL (Node Party Line) channel](#npl-node-party-line-channel)
+- [Dapp interface protocol](#dapp-interface-protocol)
+  - [Contract execution context](#contract-execution-context)
+  - [Control channel](#control-channel)
+    - [Terminating the contract](#terminating-the-contract)
+    - [Changing peers](#changing-peers)
+  - [Users/Clients channel](#usersclients-channel)
+    - [Read users' inputs](#read-users-inputs)
+    - [Send outputs](#send-outputs)
+  - [NPL (Node Party Line) channel](#npl-node-party-line-channel)
+    - [Read NPL messages](#read-npl-messages)
+    - [Send NPL messages](#send-npl-messages)
+  - [Note :](#note-)
 
 Let's get a basic understanding of these components.
 
@@ -30,10 +38,11 @@ The HotPocket consensus engine passes context parameters in `JSON` format as com
   "public_key": "<public_key>",
   "private_key": "<private_key>",
   "timestamp": "<timestamp>",
-  "readonly": "<readonly>",
+  "mode": "<mode>",
   "lcl_seq_no": "<lcl_seq_no>",
   "lcl_hash": "<lcl_hash>",
   "npl_fd": "<npl_fd>",
+  "non_consensus_rounds": "<non_consensus_rounds>"
   "control_fd": "<control_fd>",
   "user_in_fd": "<user_in_fd>",
   "users": "<users>",
@@ -44,11 +53,12 @@ The HotPocket consensus engine passes context parameters in `JSON` format as com
 - **contract_id** - GUID string of the contract which is specified at the time of deploying the contract. This is used as a validation mechanism by all the nodes of a cluster and the users to ensure they are talking with instances of the correct contract.
 - **public_key** - ed22519 public key of the node in hexadecimal format prefixed with 'ed'. HotPocket uses this key pair to sign its messages to other nodes and users.
 - **private_key** - ed22519 private key of the node in hexadecimal format prefixed with 'ed'. HotPocket uses this key pair to sign its messages to other nodes and users.
-- **readonly** - A boolean indicating whether the contract is being invoked due to a consensus execution or a read request. In readonly mode, the filesystem is readonly and represents the last consensus state.
+- **mode** - A string (`consensus|consensus_fallback|read_req`) indicating the mode which the contract is being invoked. Mode will be `consensus` if invoked due to a consensus execution. Mode will be `consensus_fallback` if invoked due to inability of reaching the consensus. Mode will be `read_req` if invoked due to a read request. In `read_req` mode, the filesystem is readonly. In both `consensus_fallback` and `read_req` modes filesystem represents the last consensus state.
 - **timestamp** - Consensus timestamp of the last closed ledger in UNIX epoch milliseconds.
 - **lcl_seq_no** - Last closed ledger sequence noumber. (Not available in read-only mode.)
 - **lcl_hash** - Last closed ledger hash in hexadecimal. (Not available in read-only mode.)
 - **npl_fd** - NPL file descriptor for the current contract invocation. Provides a channel sending/receiving messages to other contracts during consensus execution. (Not available in read-only mode.)
+- **non_consensus_rounds** - Number of consecutive rounds HotPocket missed the consensus, This will be only available in contract `consensus_fallback` mode.
 - **control_fd** - File descriptor for the contract to communicate with HotPocket.
 - **user_in_fd** - File descriptor containing all consensed user inputs.
 - **users** - List of connected users public keys, file descriptors for writing user outputs and their corresponding user input offests from `user_in_fd`.
