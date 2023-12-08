@@ -55,26 +55,18 @@ The HotPocket consensus engine passes context parameters in `JSON` format as com
 - **private_key** - ed22519 private key of the node in hexadecimal format prefixed with 'ed'. HotPocket uses this key pair to sign its messages to other nodes and users.
 - **mode** - A string (`consensus|consensus_fallback|read_req`) indicating the mode which the contract is being invoked. Mode will be `consensus` if invoked due to a consensus execution. Mode will be `consensus_fallback` if invoked due to inability of reaching the consensus. Mode will be `read_req` if invoked due to a read request. In `read_req` mode, the filesystem is readonly. In both `consensus_fallback` and `read_req` modes filesystem represents the last consensus state.
 - **timestamp** - Consensus timestamp of the last closed ledger in UNIX epoch milliseconds.
-- **lcl_seq_no** - Last closed ledger sequence noumber. (Not available in read-only mode.)
+- **lcl_seq_no** - Last closed ledger sequence number. (Not available in read-only mode.)
 - **lcl_hash** - Last closed ledger hash in hexadecimal. (Not available in read-only mode.)
 - **npl_fd** - NPL file descriptor for the current contract invocation. Provides a channel sending/receiving messages to other contracts during consensus execution. (Not available in read-only mode.)
 - **non_consensus_rounds** - Number of consecutive rounds HotPocket missed the consensus, This will be only available in contract `consensus_fallback` mode.
 - **control_fd** - File descriptor for the contract to communicate with HotPocket.
 - **user_in_fd** - File descriptor containing all consensed user inputs.
-- **users** - List of connected users public keys, file descriptors for writing user outputs and their corresponding user input offests from `user_in_fd`.
+- **users** - List of connected users public keys, file descriptors for writing user outputs and their corresponding user input offsets from `user_in_fd`.
 - **unl** - Information about list of nodes which participated in consensus (Unique Node List).
 
 ## Control channel
 
 Control messages are passed between the dapp and HotPocket via the control file descriptor. This file descriptor can be found in the contract execution context as shown earlier. The dapp can send predefined instructions to HotPocket using control messages as follows.
-
-### Terminating the contract
-
-dapps can terminate execution by sending the 'contract_end' control message to the HotPocket node.
-
-    {
-        'type': 'contract_end'
-    }
 
 ### Changing peers
 
