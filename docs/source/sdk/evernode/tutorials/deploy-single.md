@@ -1,6 +1,6 @@
 # Deploying a dapp instance
 
-You can use [Evernode developer kit](../evdevkit/overview) to deploy your [HotPocket dapps](../../../platform/hotpocket/overview.md#dapp) on Evernode. Evernode developer kit internally interacts with Evernode (via [XRPL](https://xrpl.org/)) to create Evernode instances and deploy your dapps on the [Evernode network](https://dashboard.evernode.org).
+You can use [Evernode developer kit](../evdevkit/overview) to deploy your [HotPocket dapps](../../../platform/hotpocket/overview.md#dapp) on Evernode. Evernode developer kit internally interacts with Evernode (via [Xahau](https://xahau.network/)) to create Evernode instances and deploy your dapps on the [Evernode network](https://dashboard.evernode.org).
 
 You have learned how to develop and test your dapps locally with `hpdevkit` in the [HotPocket tutorials](../../hotpocket/tutorials/index). Now let's see how you can acquire instances from Evernode and deploy the dapp you've implemented.
 
@@ -10,7 +10,19 @@ Follow [installation instructions](../evdevkit/overview.md#installation) to inst
 
 ## Acquire an instance
 
-1. First you need to have an XRPL account with EVRs for the tenant. You can generate a testnet account with 6000 EVRs from [here](https://dashboard.evernode.org/#/testnet-faucet).
+**Note:** For following steps you can choose either `mainnet` or `testnet`. Default will be `mainnet`, If you want change you need to set the environment variable as follows.
+```bash
+# Windows (command prompt)
+set EV_NETWORK=testnet
+
+# Windows (powershell)
+$env:EV_NETWORK=testnet
+
+# Linux (bash)
+export EV_NETWORK=testnet
+``` 
+
+1. First you need to have an Xahau account with EVRs for the tenant. (For the **Evernode testnet** You can generate an account with 6000 EVRs from [here](https://dashboard.evernode.org/#/testnet-faucet)).
 
 2. Then you need to prepare a user key pair for the Evernode instance.
 
@@ -75,11 +87,11 @@ Follow [installation instructions](../evdevkit/overview.md#installation) to inst
      export EV_HP_INIT_CFG_PATH=<Path to your initial HotPocket configuration file>
      ```
 
-5. Now you are ready to acquire an Evernode instance. Use the `acquire` command and pass the XRPL address of the host to acquire an instance from as a parameter. You can check the available hosts by using the [hosts page](https://dashboard.evernode.org/#/hosts) or the [`list` command](../evdevkit/overview.md#advanced-usage).
+5. Now you are ready to acquire an Evernode instance. Use the `acquire` command and pass the Xahau address of the host to acquire an instance from as a parameter. You can check the available hosts by using the [hosts page](https://dashboard.evernode.org/#/hosts) or the [`list` command](../evdevkit/overview.md#advanced-usage).
 
-   - Run the following command to acquire. Replace `<host XRPL address>` with the host address.
+   - Run the following command to acquire. Replace `<host Xahau address>` with the host address.
      ```bash
-     evdevkit acquire <host XRPL address>
+     evdevkit acquire <host Xahau address>
      ```
    - This will create an Evernode instance in a random host and outputs the instance details
      ```bash
@@ -184,7 +196,7 @@ Using Evernode devkit you can acquire and deploy Evenode instances using one com
      - Note:
        - Replace `$HOME/contract` with your contract directory path (Path to build directory of contract binaries).
        - Replace `/usr/bin/node` `index.js` with your binary path and arguments.
-       - Replace `r9kCyGhhwGj3KaSGemFrrPVpXkzVtT2b1N` with the XRPL address of host you want to acquire an instance from.
+       - Replace `r9kCyGhhwGj3KaSGemFrrPVpXkzVtT2b1N` with the Xahau address of host you want to acquire an instance from.
    - This will output following after deploying the contract.
      ```bash
      ...

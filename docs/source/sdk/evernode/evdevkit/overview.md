@@ -20,9 +20,10 @@ _**NOTE:** In Linux platforms, installation requires root privileges. Hence, add
 You can use the Evernode developer kit to acquire instances from Evernode. This will create you a fresh Evernode instance where you can deploy your dapps.
 - You are required to set `EV_TENANT_SECRET` and `EV_USER_PRIVATE_KEY` [environment variables](#environment-variables) before acquiring the instance.
 - To override configurations of Evernode instance's You can create a [HotPocket configuration](../../hotpocket/reference/configuration.md) file and set its path as `EV_HP_INIT_CFG_PATH` [environment variable](#environment-variables).
-- Following command will create an instance in a random host. Given configurations will be populated if `EV_HP_INIT_CFG_PATH` is given.
+- You can set `EV_NETWORK` "(mainnet|testnet)" to override the Evernode network used for instance creation, Otherwise defaults to "mainnet".
+- Following command will create an instance in the given host. Given configurations will be populated if `EV_HP_INIT_CFG_PATH` is given.
 ```
-evdevkit acquire <host XRPL address>
+evdevkit acquire <host Xahau address>
 ```
 - This will return the acquired instance details.
 
@@ -67,13 +68,13 @@ In order to change the tenant info you need to override the [environment variabl
 ## Advanced usage
 ```
 # Do [acquire](#acquiring-instance-from-evernode), [bundle](#creating-the-deployable-contract-package) and [deploy](#uploading-a-contract-to-evernode) in one command
-evdevkit acquire-and-deploy <path to contract directory> <contract binary> <host XRPL address> -a <contract binary arguments>
+evdevkit acquire-and-deploy <path to contract directory> <contract binary> <host Xahau address> -a <contract binary arguments>
 
 # List the active hosts in Evernode
 evdevkit list
 
 # See host info
-evdevkit host <host XRPL address>
+evdevkit host <host Xahau address>
 
 # Generate user key pair
 evdevkit keygen
@@ -122,7 +123,7 @@ _**NOTE:**_ An amount of EVRs equal to the lease amount of the host will be spen
 
 ### Auditing multiple hosts
 
-When auditing multiple hosts, you can use a text file containing a line-separated list of host XRPL addresses to define the hosts to be audited. The following command can be used to conduct an audit using an input file.
+When auditing multiple hosts, you can use a text file containing a line-separated list of host Xahau addresses to define the hosts to be audited. The following command can be used to conduct an audit using an input file.
 
 ```
 evdevkit audit -f <path to audit input file>
@@ -132,18 +133,19 @@ evdevkit audit -f <path to audit input file>
 
 When auditing a single host, you can use the following command to define the host address to be audited directly.
 ```
-evdevkit audit -h <host XRPL address>
+evdevkit audit -h <host Xahau address>
 ```
 
 ## Environment variables
 `evdevkit` CLI supports the following environment variables:
 
-| Name                    | Description                                                                         |
-| ----------------------- | ----------------------------------------------------------------------------------- |
-| EV_TENANT_SECRET        | Tenant XRPL account secret.                                                         |
-| EV_USER_PRIVATE_KEY     | Private key of the contract client (Can be generated using "evdevkit keygen").      |
-| EV_HP_INIT_CFG_PATH     | (Optional) File path of the HotPocket configuration for the instance creation.      |
-| EV_HP_OVERRIDE_CFG_PATH | (Optional) File path of the HotPocket configuration for the contract bundle upload. |
+| Name                    | Description                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------- |
+| EV_TENANT_SECRET        | Tenant Xahau account secret.                                                              |
+| EV_USER_PRIVATE_KEY     | Private key of the contract client (Can be generated using "evdevkit keygen").           |
+| EV_HP_INIT_CFG_PATH     | (Optional) File path of the HotPocket configuration for the instance creation.           |
+| EV_HP_OVERRIDE_CFG_PATH | (Optional) File path of the HotPocket configuration for the contract bundle upload.      |
+| EV_NETWORK              | (Optional) Evernode network to be used `(mainnet\|testnet)`. Default would be `mainnet`. |
 
 ## Updates
 Run following command to update `evdevkit` to the latest version:
