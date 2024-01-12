@@ -67,7 +67,7 @@ Evernode software itself does not require any ports to be opened. However SSL se
 
 Make sure you read the above sections before installing. Run the following command to install Evernode on your Linux server. You need root (sudo) access for this.
 
-**Read the above [System requirements](#system-requirements) and [Important tips](#important-tips-for-installation) even if you think you're familiar with the beta setup. Somce details have changed compared to the beta.**
+**Read the above [System requirements](#system-requirements) and [Important tips](#important-tips-for-installation) even if you think you're familiar with the beta setup. Some details have changed compared to the beta.**
 
  <!-- TODO: Update setup URL -->
 ```
