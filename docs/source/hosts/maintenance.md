@@ -32,7 +32,6 @@ You can use below command to initiate a transfer of the registration NFT.
 
 However, if you have lost access to your original host (eg. damaged host), you can use the following command in any Linux terminal. You are required to possess the Xahau account address and secret of your original host.
 
- <!-- TODO: Update setup URL -->
  ```
- Transfer link will be published in the future..
+ curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-resources/main/sashimono/installer/evernode.sh | sudo bash -s transfer
  ```
