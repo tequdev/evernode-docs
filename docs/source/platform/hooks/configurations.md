@@ -8,12 +8,12 @@ Evernode has a set of configurations that a predefined on the hooks deployment.
   - Metric of the moment size.
 - **Mint limit - 72253440**
   - Total number of EVRs issued.
-- **Host registration fee - 500**
-  - Registration fee in EVRs.
-- **Fixed reg fee - 5**
+- **Host registration deposit - 500**
+  - Registration deposit in EVRs.
+- **Fixed reg deposit - 5**
   - EVR amount reserved for the foundation on registration.
-- **Max registrants - 14112**
-  - Host registration will be halved when the total host count reaches half of this value. And at that time this value gets doubled.
+- **Max registrants - Mint limit / Host registration deposit**
+  - Registration deposit halves when the EVR on deposit exceeds 50% of the current circulating supply of EVR.
 - **Host heartbeat frequency - 1**
   - How often (In moments) the host should send a heartbeat to be marked as alive
 - **Lease acquire window - 160**
