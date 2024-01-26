@@ -7,8 +7,8 @@ If you have encountered any issues while installing Evernode, Check if your erro
   - If there's such token offer, then your token has been minted but it's failed to claim.
   - So you have to claim your token and then transfer and re install Evernode.
   - You can try either of following solutions to regain your Host.
-    - https://github.com/EvernodeXRPL/evernode-host/issues/180#issuecomment-1902611178
-    - https://github.com/EvernodeXRPL/evernode-host/issues/144#issuecomment-1898322923
+    - [Solution 1](https://github.com/EvernodeXRPL/evernode-host/issues/180#issuecomment-1902611178)
+    - [Solution 2](https://github.com/EvernodeXRPL/evernode-host/issues/144#issuecomment-1898322923)
       
 - If there's no such token offer, Check whether there's an existing URI token in your account which is issued by Evernode registry account. _(You can check this from the Xahau explorer by querying for your host account or from Xaman wallet)_
   - If you find such token then you are successfully registered with Evernode.
