@@ -47,3 +47,12 @@ However, if you have lost access to your original host (eg. damaged host), you c
  ```
  curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-resources/main/sashimono/installer/evernode.sh | sudo bash -s transfer
  ```
+
+**_Note: Make sure your secret key file is in following format when you are specifying key file path to Evernode._**
+```
+{ "xrpl": { "secret": "<your-secret>" } }
+```
+
+## Possible Errors
+
+ [Here](possible-errors.md) we have documented some solutions for some possible issues that you might come cross on Installation, Update or Transfer.
