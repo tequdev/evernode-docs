@@ -12,7 +12,7 @@ Evernode has a set of configurations that a predefined on the hooks deployment.
   - Registration deposit in EVRs.
 - **Fixed reg deposit - 5**
   - EVR amount reserved for the foundation on registration.
-- **Max registrants - Mint limit / Host registration deposit**
+- **Max registrants**
   - Registration deposit halves when the EVR on deposit exceeds 50% of the current circulating supply of EVR.
 - **Host heartbeat frequency - 1**
   - How often (In moments) the host should send a heartbeat to be marked as alive
