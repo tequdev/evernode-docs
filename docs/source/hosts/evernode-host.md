@@ -89,7 +89,7 @@ curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resource
   - Sanctioned Entities
     - Once version 0.8.2 is rolled out, You won't be able to update your host or install a new host if your machine is from one of the **Sanctioned Entities** mentioned in [Evernode license](https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/license/evernode-license.pdf)
   - Lease Amount
-    - Once version 0.8.2 is rolled out, If your lease fee is more than `reward distribution for the moment / host count * 110%`.
+    - Once version 0.8.2 is rolled out, If your lease fee is more than `(reward distribution for the moment / host count) * 110%`.
   - Version Upgrade
     - If you haven't updated to version 0.8.2 within **one week**
 

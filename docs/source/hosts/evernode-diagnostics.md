@@ -40,7 +40,7 @@ _Note: If any of the following doesn't help in your situation please send it to 
 ## 7. No rewards even if the Host is active
 - Case 1: In the version 0.8.2 you won't rewards if your host has unoffered leases.
 - Case 2: Your reputation will be set to 0, if your host has less than 3 instances.
-- Case 3: Your reputation will be set to 0, if your host's lease fee is more than `reward distribution for the moment / host count * 110%`
+- Case 3: Your reputation will be set to 0, if your host's lease fee is more than `(reward distribution for the moment / host count) * 110%`
 - Case 4: Your reputation will be set to 0, if you haven't upgraded to v0.8.2 within **one week**.
 - Case 5: Your reputation will be set to 0, if your machine is from on of the **Sanctioned Entities** mentioned in [Evernode license](https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/license/evernode-license.pdf).
   
