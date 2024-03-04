@@ -38,7 +38,11 @@ _Note: If any of the following doesn't help in your situation please send it to 
 jq: error (at <stdin>:1): Cannot iterate over null (null)
 Sashimono null not found.
 ```
-- If you are getting above error when running the Evernode curl commands `(install, update, transfer, deregister)`.
+or
+```
+Failed to retrieve latest version data.
+```
+- If you are getting above error when running the Evernode commands.
 - This could mean you got a connection issue, or your IP is blocked by Github due to exceeding request limitations.
 - Wait for some time and try again, Your limitation will be lifted and you'll be able to successfully execute the command again.
 
