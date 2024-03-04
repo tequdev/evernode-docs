@@ -33,24 +33,33 @@ _Note: If any of the following doesn't help in your situation please send it to 
 - If you are still encountering problems with the update, you can transfer your previous registration and re-install.
 - You can find how to transfer your host from [here](maintenance.md#transfer-the-host-registration).
 
-## 6. No offered lease after installation
+## 6. Failing to fetch the Sashimono version
+```
+jq: error (at <stdin>:1): Cannot iterate over null (null)
+Sashimono null not found.
+```
+- If you are getting above error when running the Evernode curl commands `(install, update, transfer, deregister)`.
+- This could mean you got a connection issue, or your IP is blocked by Github due to exceeding request limitations.
+- Wait for some time and try again, Your limitation will be lifted and you'll be able to successfully execute the command again.
+
+## 7. No offered lease after installation
 - Not the Evernode installation will only mint the leases, It won't create lease offers for you.
 - You have to run `evernode offerlease` to offer the minted leases.
 
-## 7. No rewards even if the Host is active
+## 8. No rewards even if the Host is active
 - Case 1: In the version 0.8.2 you won't rewards if your host has unoffered leases.
 - Case 2: Your reputation will be set to 0, if your host has less than 3 instances.
 - Case 3: Your reputation will be set to 0, if your host's lease fee is more than `(reward distribution for the moment / host count) * 110%`
 - Case 4: Your reputation will be set to 0, if you haven't upgraded to v0.8.2 within **one week**.
 - Case 5: Your reputation will be set to 0, if your machine is from on of the **Sanctioned Entities** mentioned in [Evernode license](https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/license/evernode-license.pdf).
   
-## 8. Lease offer creation failure
+## 9. Lease offer creation failure
 - If your lease offering failed when you run `evernode offerlease`, Executing the command again would offer the remaining leases.
     
-## 9. Stuck installation
+## 10. Stuck installation
 - If your installation is stuck on `Checking server wss:\\....` this could indicate you have some broken package dependencies.
 - Try removing `rm -r /tmp/evernode-setup-helpers` and install Evernode again.
 
-## 10. Re-config failure
+## 11. Re-config failure
 - If `evernode config` command failed in any reconfiguration, retry executing it again.
 - If retry doesn't help change the value back to the original using the `evernode config` and change back to the new value again using the same command.
