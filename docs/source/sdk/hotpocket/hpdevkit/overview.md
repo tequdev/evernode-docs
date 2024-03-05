@@ -1,6 +1,7 @@
-# HotPocket developer kit
+# Getting started with DAPP development
 
-Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC.
+## HotPocket developer kit
+Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC for free.
 
 ## Installation
 
@@ -10,7 +11,7 @@ The HotPocket developer kit requires you to install [Docker Engine](https://docs
 
 ### Cross-platform support
 
-The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems.
+The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems. (Recommended development platform is Linux)
 
 1. Install [prerequisites](#prerequisites).
 2. Run the following command to install hpdevkit on your machine:
@@ -40,6 +41,8 @@ You can re-enter the monitoring console with the command `hpdevkit logs 1`, wher
 ### Changing the cluster size
 
 In order to resize the HotPocket cluster, you need to delete and re-create it:
+
+_**NOTE:** This will delete the running app cluster. you will lose the app data._
 
 1. Delete the existing cluster using the `hpdevkit clean` command.
 2. Set the HP_CLUSTER_SIZE environment variable to the size you want.
