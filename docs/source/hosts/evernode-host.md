@@ -101,6 +101,19 @@ For monitoring and maintenance, see [maintenance tips](maintenance).
 
 At any time, you can uninstall and deregister from Evernode with `sudo evernode uninstall`. If you deregister, you will only receive half of the registration fee you paid at the registration. Also, make sure you safeguard the [secret key file](#xahau-accounts-and-secret-keys) before uninstalling.
 
+## Host configurations
+You can change your host's configurations using [Evernode CLI](evernode-cli.md)
+
+### Important optional configs
+- Affordable extra transaction fee
+  - This represents how much more you are willing to pay extra as the transaction fee.
+    - If you specify this as 10000 drops and the base fee is 2000 drop. Your fee will be maxed out at 12000 drop in case of network congestion.
+    - Basically it'll try incrementing the fee up to 12000 drops and won't go beyond that.
+  - It'll start at base fee and gets incremented in 10% of the value you have specified as extra fee.
+- Fallback servers
+  - This represents the xahaud servers to fallback the connection when the primary server you have specified is unusable.
+  - You can specify list of servers which gets randomly picked for the fallback connection.
+
 ## Governance game
 
 The Governance game allows eligible participants in the Evernode host network to propose and vote on the [Evernode Hook](../platform/hooks/overview) changes. These proposals will get accepted or purged according to a predetermined rule-set on received votes. See [governance game](../platform/hooks/governance-game).
