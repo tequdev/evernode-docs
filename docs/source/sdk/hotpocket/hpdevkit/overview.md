@@ -1,7 +1,9 @@
-# Getting started with DAPP development
+# Getting started with DApp development
 
-## HotPocket developer kit
+## HotPocket developer kit (hpdevkit)
 Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC for free.
+
+**_Throughout our documentation we may use the terms “DApp”, “smart contract” or “contract” due to historical reasons. They all mean the same thing._**
 
 ## Installation
 
@@ -11,7 +13,7 @@ The HotPocket developer kit requires you to install [Docker Engine](https://docs
 
 ### Cross-platform support
 
-The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems. (Recommended development platform is Linux)
+The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems.
 
 1. Install [prerequisites](#prerequisites).
 2. Run the following command to install hpdevkit on your machine:
@@ -19,7 +21,8 @@ The HotPocket developer kit is a [global npm package](https://www.npmjs.com/pack
    npm i hpdevkit -g
    ```
 
-_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command._
+_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command.
+Final contract bundles are deployed and run in Linux environment. Binary outputs built in windows environments might cause errors. Hence the recommended development platform is Linux_
 
 ## Creating a HotPocket smart contract
 
@@ -162,3 +165,9 @@ _**NOTE:** In Linux platforms, you will need root privileges to execute updates 
 ## Reporting issues
 
 Report issues [here](https://github.com/EvernodeXRPL/evernode-sdk/issues).
+
+## Continue reading
+
+Deep dive in to HotPocket SDK [here](../tutorials/index).
+
+Deploy your locally developed DApp in evernode using [evdevkit](../../evernode/tutorials/deployment-concepts.md).
