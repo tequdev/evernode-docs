@@ -1,4 +1,4 @@
-# HotPocket dapp examples
+# HotPocket DApp examples
 
 - [Simple echo contract (nodejs)](https://github.com/EvernodeXRPL/hp-nodejs-contract/blob/main/example/echo-contract.js)
 - [Example C contract](https://github.com/EvernodeXRPL/hp-c-contract/blob/main/example_contract.c)

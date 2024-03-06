@@ -1,12 +1,12 @@
 HotPocket SDK
 =============
 
-Use HotPocket SDK for dapp development and testing on your PC.
+Use HotPocket SDK for DApp development and testing on your PC.
 
 .. toctree::
    :maxdepth: 1
 
-   Getting started with DAPP development <hpdevkit/overview>
+   Getting started with DApp development <hpdevkit/overview>
    HotPocket Tutorials <tutorials/index>
    Libraries <libraries>
    Examples <examples>

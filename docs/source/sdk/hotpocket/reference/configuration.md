@@ -125,4 +125,4 @@ The attributes of each sub-section are as follows:
 
 
 ## ___NOTE:___
-The [dapp basics tutorial](../tutorials/basics.md#create-the-dapp) you may have already followed using HotPocket Dev Kit contains a file called `hp.cfg.override`. This file can be used to bind attributes to the `hp.cfg` file that is used inside the node in your HotPocket cluster.
+The [DApp basics tutorial](../tutorials/basics.md#create-the-dapp) you may have already followed using HotPocket Dev Kit contains a file called `hp.cfg.override`. This file can be used to bind attributes to the `hp.cfg` file that is used inside the node in your HotPocket cluster.

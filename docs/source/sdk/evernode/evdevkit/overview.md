@@ -1,5 +1,5 @@
 # Evernode developer kit
-Evernode uses HotPocket as its dapp engine. Once you have developed a HotPocket dapp on your PC, you can deploy it to Evernode using Evernode developer kit.
+Evernode uses HotPocket as its DApp engine. Once you have developed a HotPocket DApp on your PC, you can deploy it to Evernode using Evernode developer kit.
 
 ## Installation
 
@@ -17,7 +17,7 @@ This is an npm global package which supports both Linux and Windows
 _**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command._
 
 ## Acquiring instance from Evernode
-You can use the Evernode developer kit to acquire instances from Evernode. This will create you a fresh Evernode instance where you can deploy your dapps.
+You can use the Evernode developer kit to acquire instances from Evernode. This will create you a fresh Evernode instance where you can deploy your DApps.
 - You are required to set `EV_TENANT_SECRET` and `EV_USER_PRIVATE_KEY` [environment variables](#environment-variables) before acquiring the instance.
 - To override configurations of Evernode instance's You can create a [HotPocket configuration](../../hotpocket/reference/configuration.md) file and set its path as `EV_HP_INIT_CFG_PATH` [environment variable](#environment-variables).
 - You can set `EV_NETWORK` "(mainnet|testnet)" to override the Evernode network used for instance creation, Otherwise defaults to "mainnet".
@@ -28,7 +28,7 @@ evdevkit acquire <host Xahau address>
 - This will return the acquired instance details.
 
 ## Deploying a contract to Evernode
-You can deploy your already implemented [dapp](../../../platform/hotpocket/overview.md#dapp) to the acquired Evernode instance.
+You can deploy your already implemented [DApp](../../../platform/hotpocket/overview.md#dapp) to the acquired Evernode instance.
 
 ### Creating the deployable contract package
 You can package your contract using evdevkit.
@@ -79,7 +79,7 @@ evdevkit host <host Xahau address>
 # Generate user key pair
 evdevkit keygen
 
-# Create Evernode cluster and deploy a dapp
+# Create Evernode cluster and deploy a DApp
 evdevkit cluster-create <cluster size> <path to contract directory> <contract binary> <preferred hosts file path> -a <contract binary arguments>
 ```
 

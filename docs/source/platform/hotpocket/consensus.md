@@ -2,9 +2,9 @@
 
 Each HotPocket node collects specific kinds of information to be subjected to consensus. These pieces of information are used to compare and contrast itself with same types of information heard from other nodes in the cluster. Primarily, HotPocket subjects the following information for consensus: [users](users), [user inputs](users.md#user-inputs), [user outputs](users.md#user-outputs) and [state](state). Using a fingerprinting mechanism (hashing) for efficiency, the information is checked to verify whether most of the nodes are in "agreement" with each other about observed information. After checking which node is agreeing with what, each node independently arrives at a conclusion of what would be considered as the final view of the cluster. This decision is made according to a predetermined "consensus" algorithm. This process happens according to a pre-configured time schedule (usually every few seconds) which is called a consensus "round".
 
-Ideally, at every consensus round, a HotPocket node should be able to arrive at a fair conclusion that has the majority agreement of other nodes in the cluster. In such a case, HotPocket creates a "ledger" containing the final conclusion it arrives at. It then invokes the [dapp](overview.md#dapp) to act on the information which was subjected to consensus.
+Ideally, at every consensus round, a HotPocket node should be able to arrive at a fair conclusion that has the majority agreement of other nodes in the cluster. In such a case, HotPocket creates a "ledger" containing the final conclusion it arrives at. It then invokes the [DApp](overview.md#dapp) to act on the information which was subjected to consensus.
 
-If HotPocket could not reach a consensus agreement at the end of a round, it simply gives up and starts the next round without creating a ledger or invoking the dapp.
+If HotPocket could not reach a consensus agreement at the end of a round, it simply gives up and starts the next round without creating a ledger or invoking the DApp.
 
 ## UNL - Unique Node List
 
@@ -12,7 +12,7 @@ Each HotPocket node maintains a list of other nodes that it trusts. This is call
 
 ## LCL - Last Closed Ledger
 
-At the end of each consensus round (once consensus is reached and before dapp execution is started), HotPocket creates a ledger. Every ledger has a hash which includes the previous ledger hash and the current data hash. Together, this builds the chain where every ledger hash is based on the previous ledger hash. Furthermore, the ledger includes the state hash, user hash, user input/output hashes, etc. Every ledger has a sequence number which increments upon ledger creation.
+At the end of each consensus round (once consensus is reached and before DApp execution is started), HotPocket creates a ledger. Every ledger has a hash which includes the previous ledger hash and the current data hash. Together, this builds the chain where every ledger hash is based on the previous ledger hash. Furthermore, the ledger includes the state hash, user hash, user input/output hashes, etc. Every ledger has a sequence number which increments upon ledger creation.
 
 ## Consensus round
 
@@ -31,7 +31,7 @@ The following depicts a simplified overview of what happens during an arbitrary 
 5. After ledger creation, HotPocket communicates to users.
    - For consensed user inputs, we send back a status update to relevant users that their inputs made it to the ledger.
    - Consensed user outputs from round N-1 will be sent to relevant users.
-6. Then the dapp is executed.
+6. Then the DApp is executed.
    - Filesystem represents the consensed state that's in the last closed ledger (the state from round N-1).
    - User inputs that are fed into the contract are the ones that are in the lase closed ledger (user inputs from round N).
 7. After contract exits, the generated "local" user outputs collected for the use of round N+1. Then we move on to round N+1 and repeat the process.

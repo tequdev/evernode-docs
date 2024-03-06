@@ -1,7 +1,7 @@
 Evernode SDK
 ============
 
-Use Evernode SDK for deploying and runnig dapps on the decentralized hosting infrastructure.
+Use Evernode SDK for deploying and runnig DApps on the decentralized hosting infrastructure.
 
 .. toctree::
    :maxdepth: 1

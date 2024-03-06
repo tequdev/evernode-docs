@@ -5,7 +5,7 @@
 Evernode documentation
 ======================
 
-Evernode is a decentralized marketplace of hosting infrastructure for decentralized apps (dapps). This documentation contains information
+Evernode is a decentralized marketplace of hosting infrastructure for decentralized apps (DApps). This documentation contains information
 about how the Evernode platform works, how to be a part of it and how to develop apps for Evernode.
 
 Start reading with :doc:`platform overview </platform/overview>`.

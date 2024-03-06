@@ -54,7 +54,7 @@ As the [System requirements](#system-requirements) specifies, you need sufficien
 
 ### Network usage and costs
 
-Based on the smart contracts that are hosted on your server, your server will accumulate network usage while it's operating. We recommend you monitor the network usage or set upper limits to avoid unpredictable costs based on your infrastructure provider pricing plans. It's also possible that your host may be hosting misbehaving and ill-intentioned dapps. You have the authority to purge bad actors using the [evernode cli](evernode-cli).
+Based on the smart contracts that are hosted on your server, your server will accumulate network usage while it's operating. We recommend you monitor the network usage or set upper limits to avoid unpredictable costs based on your infrastructure provider pricing plans. It's also possible that your host may be hosting misbehaving and ill-intentioned DApps. You have the authority to purge bad actors using the [evernode cli](evernode-cli).
 
 ### Firewalls and ports
 

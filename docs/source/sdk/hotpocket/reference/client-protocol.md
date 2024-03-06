@@ -1,11 +1,11 @@
 # Client (user) protocol
-Users communicate with Hotpocket via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). There is no direct communication between [users](../../../platform/hotpocket/users) and [dapps](../../../platform/hotpocket/overview.md#dapp). Instead, the user communicates with HotPocket, and HotPocket serves as an intermediary between the user and the dapp. There is a  special protocol for this communication.<br><br> Every message that is being sent to and from HotPocket contains a type field. User messages can be sent and received in [json](https://en.wikipedia.org/wiki/JSON) or [bson](https://en.wikipedia.org/wiki/BSON) formats, where the format is decided when the initial handshake happens with the user. The handshake messages will be in json format. The message protocol is described below in a detailed manner.
+Users communicate with Hotpocket via [WebSockets](https://en.wikipedia.org/wiki/WebSocket). There is no direct communication between [users](../../../platform/hotpocket/users) and [DApps](../../../platform/hotpocket/overview.md#dapp). Instead, the user communicates with HotPocket, and HotPocket serves as an intermediary between the user and the DApp. There is a  special protocol for this communication.<br><br> Every message that is being sent to and from HotPocket contains a type field. User messages can be sent and received in [json](https://en.wikipedia.org/wiki/JSON) or [bson](https://en.wikipedia.org/wiki/BSON) formats, where the format is decided when the initial handshake happens with the user. The handshake messages will be in json format. The message protocol is described below in a detailed manner.
 
 ## Initiating a user connection
 
 ### User challenge
 When a user establishes a WebSoket connection to HotPocket, a user challenge is sent to the user from HotPocket.
-This message includes the HotPocket version, the running dapp's id, the running dapp's version, and a user challenge hex string.
+This message includes the HotPocket version, the running DApp's id, the running DApp's version, and a user challenge hex string.
 ```
     {
         "hp_version": "<hp protocol version>",

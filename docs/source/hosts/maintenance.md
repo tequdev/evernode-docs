@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resource
 
 ## Purging bad actors
 
-It cannot be avoided that some Dapp instances running on your host will misbehave or perform malicious activities across the internet. They cannot harm the operation of other dapps or your Host but they can utilize your network bandwidth or may engage in unethical behavior. When you identify such Dapp instances You can use `evernode list` and `evernode delete` CLI commands to purge them from your host. See [evernode CLI](evernode-cli).
+It cannot be avoided that some DApp instances running on your host will misbehave or perform malicious activities across the internet. They cannot harm the operation of other DApps or your Host but they can utilize your network bandwidth or may engage in unethical behavior. When you identify such DApp instances You can use `evernode list` and `evernode delete` CLI commands to purge them from your host. See [evernode CLI](evernode-cli).
 
 ## Transfer the host registration
 
