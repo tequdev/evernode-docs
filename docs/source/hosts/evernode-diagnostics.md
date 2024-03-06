@@ -59,8 +59,12 @@ Failed to retrieve latest version data.
   
 ## 9. Lease offer creation failure
 - **Case 1:** If your lease offering failed when you run `evernode offerlease`, Executing the command again would offer the remaining leases.
-- **Case 2:** If `evernode status` shows unoffered lease, still you are getting following error when executing `evernode offerlease`.
-  - `evernode status` output : `Available Lease offers: 3 out of 6`
+- **Case 2:** If `evernode status` shows unoffered lease, but still you are getting following error when executing `evernode offerlease`.
+  - `evernode status` output :
+    ```
+    Available Lease offers: 3 out of 6
+    ````
+  - `evernode offerlease` output :
     ```
     CLI_OUT: LEASE_OFFER_ERR
     MB_CLI_EXITED
