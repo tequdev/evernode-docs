@@ -79,9 +79,40 @@ evdevkit host <host Xahau address>
 # Generate user key pair
 evdevkit keygen
 
-# Create Evernode cluster and deploy a DApp
-evdevkit cluster-create <cluster size> <path to contract directory> <contract binary> <preferred hosts file path> -a <contract binary arguments>
+# Create Evernode cluster and deploy a DApp.
+evdevkit cluster-create <cluster-size> <path-to-contract-directory> <contract-binary> <preferred-hosts-file-path> -a <contract binary arguments>
 ```
+see an example usage [here](../tutorials/deploy-cluster.md#deploying-a-smart-contract-to-an-evernode-cluster).
+
+`evdevkit cluster-create` Arguments:
+
+| Name                      | Description                                                                           |
+| ------------------------- | --------------------------------------------------------------------------            |
+| cluster-size              | Size of the cluster.                                                                  |
+| path-to-contract-directory| Absolute path to the contract directory to be bundled.                                |
+| contract-binary           | Contract binary name                                                                  |
+| preferred-hosts-file-path | File path of preferred host account list (in line-by-line format)                     |
+
+`evdevkit cluster-create`  Options:
+
+
+
+| Name                                          | Description                                                                                               |
+|---------------------------------------------  | ------------------------------------------------------------------------------------------------------    |
+| <pre>-a, <code>--contract-args</code></pre>   | Contract binary arguments                                                                                 |
+| <pre>-m, <code>--moments</code></pre>         | Life moments                                                                                              |
+| <pre>-c, <code>--contract-id</code></pre>     | Contract id                                                                                               |
+| <pre>-i, <code>--image</code></pre>           | Instance image                                                                                            |
+| <pre>-l, <code>--life-plan</code></pre>       | Organize cluster node lifespans using stat (static - default), rand (random), or inc (incremental) modes. |
+| <pre><code>--min-life</code></pre>            | Minimum moment count to consider in randomized node life planning.                                        |
+| <pre><code>--max-life</code></pre>            | Maximum moment count to consider in randomized node life planning.                                        |
+| <pre><code>--life-gap</code></pre>            | Life gap in moments in incremental node life planning.                                                    |
+| <pre><code>--signer-count</code></pre>        | Number of signers for a cluster with multiple signer nodes                                                |
+| <pre><code>--signers</code></pre>             | JSON file path of signer details                                                                          |
+| <pre><code>--signer-life</code></pre>         | Life moments for the signers                                                                              |
+| <pre><code>--signer-quorum</code></pre>       | Quorum of the cluster with multiple signer nodes (within the valid range (0,1])                           |
+| <pre>-e, <code>--evr-limit</code></pre>       | Maximum amount of EVRs to be spent on instance acquisitions                                               |
+| <pre>-h, <code>--help</code></pre>            | display help for command                                                                                  |
 
 An example HotPocket configuration for the instance creation:
 ```json
