@@ -97,22 +97,22 @@ see an example usage [here](../tutorials/deploy-cluster.md#deploying-a-smart-con
 
 
 
-| Name                                          | Description                                                                                               |
-|---------------------------------------------  | ------------------------------------------------------------------------------------------------------    |
-| <pre>-a, <code>--contract-args</code></pre>   | Contract binary arguments                                                                                 |
-| <pre>-m, <code>--moments</code></pre>         | Life moments                                                                                              |
-| <pre>-c, <code>--contract-id</code></pre>     | Contract id                                                                                               |
-| <pre>-i, <code>--image</code></pre>           | Instance image                                                                                            |
-| <pre>-l, <code>--life-plan</code></pre>       | Organize cluster node lifespans using stat (static - default), rand (random), or inc (incremental) modes. |
-| <pre><code>--min-life</code></pre>            | Minimum moment count to consider in randomized node life planning.                                        |
-| <pre><code>--max-life</code></pre>            | Maximum moment count to consider in randomized node life planning.                                        |
-| <pre><code>--life-gap</code></pre>            | Life gap in moments in incremental node life planning.                                                    |
-| <pre><code>--signer-count</code></pre>        | Number of signers for a cluster with multiple signer nodes                                                |
-| <pre><code>--signers</code></pre>             | JSON file path of signer details                                                                          |
-| <pre><code>--signer-life</code></pre>         | Life moments for the signers                                                                              |
-| <pre><code>--signer-quorum</code></pre>       | Quorum of the cluster with multiple signer nodes (within the valid range (0,1])                           |
-| <pre>-e, <code>--evr-limit</code></pre>       | Maximum amount of EVRs to be spent on instance acquisitions                                               |
-| <pre>-h, <code>--help</code></pre>            | display help for command                                                                                  |
+|Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Description|
+|---------------------------|-----------------------------------------------------------------------------------------------------------|
+| -a, `--contract-args`     | Contract binary arguments                                                                                 |
+| -m, `--moments`           | Life moments                                                                                              |
+| -c, `--contract-id`       | Contract id                                                                                               |
+| -i, `--image`             | Instance image                                                                                            |
+| -l, `--life-plan`         | Organize cluster node lifespans using stat (static - default), rand (random), or inc (incremental) modes. |
+| `--min-life`              | Minimum moment count to consider in randomized node life planning.                                        |
+| `--max-life`              | Maximum moment count to consider in randomized node life planning.                                        |
+| `--life-gap`              | Life gap in moments in incremental node life planning.                                                    |
+| `--signer-count`          | Number of signers for a cluster with multiple signer nodes                                                |
+| `--signers`               | JSON file path of signer details                                                                          |
+| `--signer-life`           | Life moments for the signers                                                                              |
+| `--signer-quorum`         | Quorum of the cluster with multiple signer nodes (within the valid range (0,1])                           |
+| -e, `--evr-limit`         | Maximum amount of EVRs to be spent on instance acquisitions                                               |
+| -h, `--help`              | display help for command                                                                                  |
 
 An example HotPocket configuration for the instance creation:
 ```json
