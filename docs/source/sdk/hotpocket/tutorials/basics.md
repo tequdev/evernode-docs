@@ -16,7 +16,24 @@ Follow [installation instructions](../hpdevkit/overview.md#installation) to inst
 
 ## Create the DApp
 
-Generate a blank DApp project with `hpdevkit gen nodejs blank-contract mycontract`. It will create a folder named 'mycontract' with contract files. Let's have a look at them.
+Generate a blank DApp project with 
+```
+hpdevkit gen nodejs blank-contract mycontract
+```
+It will create a folder named 'mycontract' with contract files. Let's have a look at them. Here `nodejs` is the platform name. `blank-contract` is the template name.
+
+Other templates available
+- blank-client
+- blank-contract
+- evernode-bootstrap-client
+- file-content
+- file-contract
+- npm-client
+- npl-contract
+- starter-client
+- starter-contract
+
+You can use `hpdevkit list <platform>` to list the available templates.
 
 ### src/mycontract.js
 

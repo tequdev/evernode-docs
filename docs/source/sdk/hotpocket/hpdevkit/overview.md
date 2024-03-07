@@ -167,7 +167,8 @@ _**NOTE:** In Linux platforms, you will need root privileges to execute updates 
 Report issues [here](https://github.com/EvernodeXRPL/evernode-sdk/issues).
 
 ## Continue reading
+HotPocket [Concepts](../../../platform/hotpocket/index).
 
-Deep dive in to HotPocket SDK [here](../tutorials/index).
+HotPocket SDK [Basics](../tutorials/basics.md).
 
-Deploy your locally developed DApp in evernode using [evdevkit](../../evernode/tutorials/deployment-concepts.md).
+Deploy your locally developed DApp in evernode using [evdevkit](../../evernode/index).

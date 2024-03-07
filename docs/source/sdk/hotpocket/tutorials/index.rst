@@ -4,7 +4,6 @@ HotPocket Tutorials
 .. toctree::
    :maxdepth: 1
 
-   basics
    multinode
    persistdata
    readreq

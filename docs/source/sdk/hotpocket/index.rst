@@ -7,6 +7,7 @@ Use HotPocket SDK for DApp development and testing on your PC.
    :maxdepth: 1
 
    Getting started with DApp development <hpdevkit/overview>
+   HotPocket Basics <tutorials/basics>
    HotPocket Tutorials <tutorials/index>
    Libraries <libraries>
    Examples <examples>
