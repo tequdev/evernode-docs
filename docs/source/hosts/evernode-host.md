@@ -118,6 +118,10 @@ You can change your host's configurations using [Evernode CLI](evernode-cli.md)
 
 The Governance game allows eligible participants in the Evernode host network to propose and vote on the [Evernode Hook](../platform/hooks/overview) changes. These proposals will get accepted or purged according to a predetermined rule-set on received votes. See [governance game](../platform/hooks/governance-game).
 
+## Diagnostics
+
+ [Here](evernode-diagnostics.md) we have documented some solutions for some possible issues that you might come across on Installation, Update or Transfer.
+ 
 ## Reporting issues
 
 Please report any issues and error logs [here](https://github.com/EvernodeXRPL/evernode-host/issues).
