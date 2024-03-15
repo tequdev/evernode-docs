@@ -2,13 +2,13 @@
 
 ## Transaction costs
 
-As mentioned in [System requirements](evernode-host.md#in-addition-to-the-above-you-need-to-posses-following), you need to keep a sufficient XAH balance in the host account to cover the transaction fees for your host. Transaction feed originates from [Heartbeat](../platform/hooks/operations.md#heartbeat) transactions sent to the hook as well as instance creation replies sent back to tenants.
+As mentioned in [System requirements](evernode-host.md#system-requirements), you need to keep a sufficient XAH balance in the host account to cover the transaction fees for your host. Transaction feed originates from [Heartbeat](../platform/hooks/operations.md#heartbeat) transactions sent to the hook as well as instance creation replies sent back to tenants.
 
 ## Updating the Evernode software
 
 You can run `evernode update` to check and install updates to Evernode.
 
-**Note: For Evernode 0.8.2 update `evernode update` command would not show any pending updates for your Sashimono. To update to v0.8.2, run below command. It is recommended to use the following command for an independent Evernode update.**
+**Note: For the Evernode 0.8.2 update `evernode update` command would not show any pending updates for your Sashimono. To update to v0.8.2, run the below command. It is recommended to use the following command for an independent Evernode update.**
 ```
 curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/sashimono/installer/evernode.sh | sudo bash -s update
 ```
@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resource
 
 ## Purging bad actors
 
-It cannot be avoided that some Dapp instances running on your host will misbehave or perform malicious activities across the internet. They cannot harm the operation of other dapps or your Host but they can utilize your network bandwidth or may engage in unethical behavior. When you identify such Dapp instances You can use `evernode list` and `evernode delete` CLI commands to purge them from your host. See [evernode CLI](evernode-cli).
+It cannot be avoided that some DApp instances running on your host will misbehave or perform malicious activities across the internet. They cannot harm the operation of other DApps or your Host but they can utilize your network bandwidth or may engage in unethical behavior. When you identify such DApp instances You can use `evernode list` and `evernode delete` CLI commands to purge them from your host. See [evernode CLI](evernode-cli).
 
 ## Transfer the host registration
 

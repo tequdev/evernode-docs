@@ -1,6 +1,9 @@
-# HotPocket developer kit
+# Getting started with DApp development
 
-Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC.
+## HotPocket developer kit (hpdevkit)
+Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC for free.
+
+**_Throughout our documentation we may use the terms “DApp”, “smart contract” or “contract” due to historical reasons. They all mean the same thing._**
 
 ## Installation
 
@@ -10,7 +13,7 @@ The HotPocket developer kit requires you to install [Docker Engine](https://docs
 
 ### Cross-platform support
 
-The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems.
+The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) that supports both Linux and Windows operating systems.
 
 1. Install [prerequisites](#prerequisites).
 2. Run the following command to install hpdevkit on your machine:
@@ -18,7 +21,8 @@ The HotPocket developer kit is a [global npm package](https://www.npmjs.com/pack
    npm i hpdevkit -g
    ```
 
-_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command._
+_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command.
+Final contract bundles are deployed and run in Linux environment. Binary outputs built-in Windows environments might cause errors. Hence the recommended development platform is Linux_
 
 ## Creating a HotPocket smart contract
 
@@ -40,6 +44,8 @@ You can re-enter the monitoring console with the command `hpdevkit logs 1`, wher
 ### Changing the cluster size
 
 In order to resize the HotPocket cluster, you need to delete and re-create it:
+
+_**NOTE:** This will delete the running app cluster. you will lose the app data._
 
 1. Delete the existing cluster using the `hpdevkit clean` command.
 2. Set the HP_CLUSTER_SIZE environment variable to the size you want.
@@ -68,14 +74,37 @@ npm install
 node myclient.js
 ```
 
-This will start the client application and connect a HotPocket node listening to port 8081. Also note that you need to have HotPocket nodes running on your machine for the client to connect.
+This will start the client application and connect a HotPocket node listening to port 8081. Also, note that you need to have HotPocket nodes running on your machine for the client to connect.
+
+## Listing available code templates
+
+You can use the `hpdevkit list` command to list all available comtract and client code templates. 
+
+```
+hpdevkit list <platform>
+```
+- `<platform>` is an optional parameter that can be used to filter code templates based on the platform they are designed for.
+
+## Deploying contract files directory to the cluster
+
+You can use the `hpdevkit deploy` command to deploy a specified contract file directory to a HotPocket cluster.
+
+```
+hpdevkit deploy <contract-files-directory>
+```
+- `<contract-files-directory>` should contain the path of the contract directory to be deployed.
+- The following options can be specified with this command:
+
+  | Name                              | Description                         |
+  | --------------------------------- | ----------------------------------- |
+  | `-m, --multi-sig [multi-sig]`     | Multi signing enabled.            |
+  | `-a, --master-addr [master-addr]` | Master address for multi signing. |
+  | `-s, --master-sec [master-sec]`   | Master secret for multi signing.  |
+
 
 ## Advanced usage
 
 ```
-# Deploy contract files directory to the cluster (`npm start` internally uses this command to deploy)
-hpdevkit deploy <contract files directory>
-
 # Stop and clean-up everything (required for changing cluster size)
 hpdevkit clean
 
@@ -117,14 +146,17 @@ You can inspect the files of all the nodes of the cluster using Docker Desktop.
 
 `hpdevkit` CLI supports the following environment variables:
 
-| Name               | Description                                                                      | Default value                                |
-| ------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |
-| HP_CLUSTER_SIZE    | The number of nodes in the cluster. This only takes effect with a fresh cluster. | `3`                                          |
-| HP_DEFAULT_NODE    | The node which the 'deploy' command uses to display logs.                        | `1`                                          |
-| HP_DEVKIT_IMAGE    | The Docker image to be used for devkit cluster management.                       | `evernode/hpdevkit`                          |
-| HP_INSTANCE_IMAGE  | The Docker image to be used for HotPocket instances.                             | `evernode/hotpocket:latest-ubt.20.04-njs.20` |
-| HP_USER_PORT_BEGIN | The starting user port number for the cluster.                                   | `8081`                                       |
-| HP_PEER_PORT_BEGIN | The starting peer port number for the cluster.                                   | `22861`                                      |
+| Name                   | Description                                                                                                                                                | Default value                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| HP_CLUSTER_SIZE        | The number of nodes in the cluster. This only takes effect with a fresh cluster.                                                                           | `3`                                          |
+| HP_DEFAULT_NODE        | The node which the 'deploy' command uses to display logs.                                                                                                  | `1`                                          |
+| HP_DEVKIT_IMAGE        | The Docker image to be used for devkit cluster management.                                                                                                 | `evernode/hpdevkit`                          |
+| HP_INSTANCE_IMAGE      | The Docker image to be used for HotPocket instances.                                                                                                       | `evernode/hotpocket:latest-ubt.20.04-njs.20` |
+| HP_USER_PORT_BEGIN     | The starting user port number for the cluster.                                                                                                             | `8081`                                       |
+| HP_PEER_PORT_BEGIN     | The starting peer port number for the cluster.                                                                                                             | `22861`                                      |
+| HP_EV_NETWORK          | (Optional) Evernode network to be used. This is only for Xahau transaction contracts.                                                                      | `mainnet`                                    |
+| HP_MULTI_SIGNER_WEIGHT | (Optional) Multi signer weight for each cluster node's signer account. This is only for Xahau transaction contracts.                                       | `1`                                          |
+| HP_MULTI_SIGNER_QUORUM | (Optional) Multi signer quorum ([0-1] - Percentage of total weights) for each cluster node's signer account. This is only for Xahau transaction contracts. | `0.8`                                        |
 
 ## Updates
 
@@ -159,3 +191,10 @@ _**NOTE:** In Linux platforms, you will need root privileges to execute updates 
 ## Reporting issues
 
 Report issues [here](https://github.com/EvernodeXRPL/evernode-sdk/issues).
+
+## Continue reading
+HotPocket [Concepts](../../../platform/hotpocket/index).
+
+HotPocket SDK [Basics](../tutorials/basics.md).
+
+Deploy your locally developed DApp in evernode using [evdevkit](../../evernode/index).

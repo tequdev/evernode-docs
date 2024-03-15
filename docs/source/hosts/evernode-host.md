@@ -45,7 +45,7 @@ You can use a physical or virtual (VPS) Linux server as your Evernode host. **[W
 You must possess a domain name (eg. `myhost.myhosting.com`) which is used to reach your host. This is required for proper SSL support for communicating with smart contracts hosted in your host. Evernode uses [Let's Encrypt](https://letsencrypt.org/) for automatic free SSL setup for your domain name. Domain names that map to multiple IP addresses (round-robin DNS) should not be used.
 
 ### Email address
-You must provide an email address during the installation of your host. The email address will be published on your host registration entry on the Hook which makes it **publicly visible to anyone**. It is put on display at the [dashboard](https://dashboard.evernode.org/) page for your host. There are two purposes for this email address:
+You must provide an email address during the installation of your host. The email address will be published on your host registration entry on the Hook which makes it **publicly visible to anyone**. It is put on display at the [Community Dashboards](https://dashboard.evernode.org/). There are two purposes for this email address:
   - It is intended to be used as a public contact email for your host so that the general public can inquire about or report issues about your host.
   - If you opt-in for [Let's Encrypt](https://letsencrypt.org/) automatic free SSL setup during the installation, this email is used for your host's SSL certificate registration with Let'sEncrypt. Let'sEncrypt will send email notifications about automatic SSL renewals periodically.
 
@@ -54,14 +54,14 @@ As the [System requirements](#system-requirements) specifies, you need sufficien
 
 ### Network usage and costs
 
-Based on the smart contracts that are hosted on your server, your server will accumulate network usage while it's operating. We recommend you monitor the network usage or set upper limits to avoid unpredictable costs based on your infrastructure provider pricing plans. It's also possible that your host may be hosting misbehaving and ill-intentioned dapps. You have the authority to purge bad actors using the [evernode cli](evernode-cli).
+Based on the smart contracts that are hosted on your server, your server will accumulate network usage while it's operating. We recommend you monitor the network usage or set upper limits to avoid unpredictable costs based on your infrastructure provider pricing plans. It's also possible that your host may be hosting misbehaving and ill-intentioned DApps. You have the authority to purge bad actors using the [evernode cli](evernode-cli).
 
 ### Firewalls and ports
 
-Evernode software itself does not require any ports to be opened. However SSL setup and hosted smart contracts require the following conditions to be met. Please note that Evernode automatically adds the required allow-rules for these ports to the operating system firewall. But if your host is behind an external firewall, you need to allow incoming TCP traffic to them yourself.
+Evernode software itself does not require any ports to be opened. However, SSL setup and hosted smart contracts require the following conditions to be met. Please note that Evernode automatically adds the required allow-rules for these ports to the operating system firewall. But if your host is behind an external firewall, you need to allow incoming TCP traffic to them yourself.
 
 - The smart contracts that are getting hosted on your host require certain ports to be opened and incoming traffic to be allowed. There are two port ranges which by default start at 26201 and 22861. If your host supports `n` contract instances, the port ranges to allow would be `26201 to 26201+n` and `22861 to 22861+n`.
-- Evernode's automatic SSL setup requires port 80 to be free and incoming traffic to be allowed to it. Without this, the initial SSL setup and subsequent SSL renewals will fail. (If you are running a web server like Apache or nginx on the same host, they will cause the SSL setup to fail. You can stop them or configure them to not use port 80 to overcome this problem.)
+- Evernode's automatic SSL setup requires port 80 to be free and incoming traffic to be allowed to it. Without this, the initial SSL setup and subsequent SSL renewals will fail. (If you are running a web server like Apache or Nginx on the same host, they will cause the SSL setup to fail. You can stop them or configure them to not use port 80 to overcome this problem.)
 
 ### Creating Lease Offers
 
@@ -107,12 +107,12 @@ You can change your host's configurations using [Evernode CLI](evernode-cli.md)
 ### Important optional configs
 - Affordable extra transaction fee
   - This represents how much more you are willing to pay extra as the transaction fee.
-    - If you specify this as 10000 drops and the base fee is 2000 drop. Your fee will be maxed out at 12000 drop in case of network congestion.
-    - Basically it'll try incrementing the fee up to 12000 drops and won't go beyond that.
-  - It'll start at base fee and gets incremented in 10% of the value you have specified as extra fee.
+    - If you specify this as 10000 drops and the base fee is 2000 drops. Your fee will be maxed out at 12000 drop in case of network congestion.
+    - Basically, it'll try incrementing the fee up to 12000 drops and won't go beyond that.
+  - It'll start at a base fee and gets incremented in 10% of the value you have specified as an extra fee.
 - Fallback servers
   - This represents the xahaud servers to fallback the connection when the primary server you have specified is unusable.
-  - You can specify list of servers which gets randomly picked for the fallback connection.
+  - You can specify a list of servers that get randomly picked for the fallback connection.
 
 ## Governance game
 
@@ -126,9 +126,9 @@ The Governance game allows eligible participants in the Evernode host network to
 
 Please report any issues and error logs [here](https://github.com/EvernodeXRPL/evernode-host/issues).
 
-## Global hosts dashboard
+## Global hosts dashboards
 
-We maintain a dashboard containing all registered Evernode hosts. You can access it at [dashboard.evernode.org](https://dashboard.evernode.org/) ([source code](https://github.com/EvernodeXRPL/evernode-dashboard)).
+The Evernode community maintains dashboards containing all registered Evernode hosts. You can access them at [dashboard.evernode.org](https://dashboard.evernode.org/).
 
 ## Evernode testnet
 

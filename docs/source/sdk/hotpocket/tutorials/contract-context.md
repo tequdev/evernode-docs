@@ -30,7 +30,7 @@ const client = await HotPocket.createClient(
 );
 ```
 
-This client will drop the connection if the contract id presented by the HotPocket instance its connecting to does not match.
+This client will drop the connection if the contract id presented by the HotPocket instance it's connecting to does not match.
 
 ## publicKey and privateKey
 
@@ -52,7 +52,7 @@ const client = await HotPocket.createClient(
 
 ## readonly
 
-A boolean indicating whether the contract is being invoked due to a consensus execution or a [read request](readreq). In readonly mode, the filesystem is readonly and represents the last consensus state. At any given time, multiple readonly executions of the contract can happen. However only one consensus execution will happen at any given time.
+A boolean indicating whether the contract is being invoked due to a consensus execution or a [read request](readreq). In readonly mode, the filesystem is readonly and represents the last consensus state. At any given time, multiple readonly executions of the contract can happen. However, only one consensus execution will happen at any given time.
 
 ## timestamp
 
@@ -69,3 +69,5 @@ Contains information about the nodes that participate in consensus. Via this you
 ## lclSeqNo and lclHash
 
 This is the last closed ledger sequence number and the hexadecimal hash. During consensus, the ledger data is salted with an agreed-upon random value. Therefore, you could use the lcl hash as a deterministic random seed for your contract.
+
+Next: [Dealing with xahau transactions](multisig)

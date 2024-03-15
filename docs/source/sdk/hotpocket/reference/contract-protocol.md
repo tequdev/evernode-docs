@@ -1,16 +1,16 @@
-# Dapp interface protocol
+# DApp interface protocol
 
-HotPocket defines a dapp as a regular POSIX application that can receive Inputs, produce Outputs and also persist State to permanent storage. You can use any POSIX-compliant programming platform to create HotPocket dapps. Furthermore, you can also develop a library that helps to execute the HotPocket features efficiently.
+HotPocket defines a DApp as a regular POSIX application that can receive Inputs, produce Outputs and also persist State to permanent storage. You can use any POSIX-compliant programming platform to create HotPocket DApps. Furthermore, you can also develop a library that helps to execute the HotPocket features efficiently.
 
 Currently, there are two such libraries available for [NodeJS](https://github.com/EvernodeXRPL/hp-nodejs-contract) and [C](https://github.com/EvernodeXRPL/hp-c-contract).
 
-The HotPocket [dapp](../../../platform/hotpocket/overview.md#dapp) is spawned as a child process by HotPocket for each [consensus](../../../platform/hotpocket/consensus.md) round. The communication between the dapp and the HotPocket consensus engine happens as an inter-process communication using [file descriptors](https://en.wikipedia.org/wiki/File_descriptor). As per the IBM definition, the file descriptor is an unsigned integer used by a process to identify an open file. In HotPocket, there is a set of application-specific file descriptors, which are used for different channels. The file descriptors that are currently defined are given below (each and every message protocol will be described later):
+The HotPocket [DApp](../../../platform/hotpocket/overview.md#dapp) is spawned as a child process by HotPocket for each [consensus](../../../platform/hotpocket/consensus.md) round. The communication between the DApp and the HotPocket consensus engine happens as an inter-process communication using [file descriptors](https://en.wikipedia.org/wiki/File_descriptor). As per the IBM definition, the file descriptor is an unsigned integer used by a process to identify an open file. In HotPocket, there is a set of application-specific file descriptors, which are used for different channels. The file descriptors that are currently defined are given below (each and every message protocol will be described later):
 
 - User input/output file descriptor
 - NPL file descriptor
 - Control file descriptor
 
-When implementing a dapp on the HotPocket consensus engine, you need to consider the following basic components of the HotPocket dapp:
+When implementing a DApp on the HotPocket consensus engine, you need to consider the following basic components of the HotPocket DApp:
 
 - [Contract execution context](#contract-execution-context)
 - [Control channel](#control-channel)
@@ -48,19 +48,19 @@ The HotPocket consensus engine passes context parameters in `JSON` format as com
 - **timestamp** - Consensus timestamp of the last closed ledger in UNIX epoch milliseconds.
 - **lcl_seq_no** - Last closed ledger sequence number. (Not available in read-only mode.)
 - **lcl_hash** - Last closed ledger hash in hexadecimal. (Not available in read-only mode.)
-- **npl_fd** - NPL file descriptor for the current contract invocation. Provides a channel sending/receiving messages to other contracts during consensus execution. (Not available in read-only mode.)
+- **npl_fd** - NPL file descriptor for the current contract invocation. Provides a channel for sending/receiving messages to other contracts during consensus execution. (Not available in read-only mode.)
 - **control_fd** - File descriptor for the contract to communicate with HotPocket.
 - **user_in_fd** - File descriptor containing all consensed user inputs.
-- **users** - List of connected users public keys, file descriptors for writing user outputs and their corresponding user input offsets from `user_in_fd`.
-- **unl** - Information about list of nodes which participated in consensus (Unique Node List).
+- **users** - List of connected users public keys, file descriptors for writing user outputs, and their corresponding user input offsets from `user_in_fd`.
+- **unl** - Information about the list of nodes that participated in consensus (Unique Node List).
 
 ## Control channel
 
-Control messages are passed between the dapp and HotPocket via the control file descriptor. This file descriptor can be found in the contract execution context as shown earlier. The dapp can send predefined instructions to HotPocket using control messages as follows.
+Control messages are passed between the DApp and HotPocket via the control file descriptor. This file descriptor can be found in the contract execution context as shown earlier. The DApp can send predefined instructions to HotPocket using control messages as follows.
 
 ### Changing peers
 
-dapps can add or remove peers from the HotPocket node by sending the 'peer_changeset' control message. After receiving this message, HotPocket will add the peers in the `add` section to the peer list, and remove the peers in the `remove` section from the peer list.
+DApps can add or remove peers from the HotPocket node by sending the 'peer_changeset' control message. After receiving this message, HotPocket will add the peers in the `add` section to the peer list, and remove the peers in the `remove` section from the peer list.
 
     {
         'type': 'peer_changeset',
@@ -72,11 +72,11 @@ NOTE: Control messages should not exceed 128KB.
 
 ## Users/Clients channel
 
-The HotPocket dapp maintains a single file descriptor for user inputs and separate file descriptors for user outputs. Currently, user messages can be sent and received in JSON or BSON formats.
+The HotPocket DApp maintains a single file descriptor for user inputs and separate file descriptors for user outputs. Currently, user messages can be sent and received in JSON or BSON formats.
 
 ### Read users' inputs
 
-When a contract is executing, the collected [user inputs](../../../platform/hotpocket/users.md#user-inputs) by HotPocket are passed to the dapp via the user input file descriptor.
+When a contract is executing, the collected [user inputs](../../../platform/hotpocket/users.md#user-inputs) by HotPocket are passed to the DApp via the user input file descriptor.
 
 The `users` object that is passed inside the stdin arguments from the HotPocket consensus engine will be in the following format:
 
@@ -95,9 +95,9 @@ In this way, when reading user inputs from the user input file descriptor (`user
 
 ### Send outputs
 
-For the [user output](../../../platform/hotpocket/users.md#user-outputs) file descriptors, the dapp receives a map of users with their file descriptors. The contract outputs are passed via each user's output file descriptor from the dapp. The positioning of the output file descriptors inside the `users` object can be observed in the previous section which is about `reading users' inputs`.
+For the [user output](../../../platform/hotpocket/users.md#user-outputs) file descriptors, the DApp receives a map of users with their file descriptors. The contract outputs are passed via each user's output file descriptor from the DApp. The positioning of the output file descriptors inside the `users` object can be observed in the previous section which is about `reading users' inputs`.
 
-When sending messages to the users, the HotPocket dapp should serialize the message accordingly based on the type of the message and the protocol that is used (BSON or JSON). This serialized message is written into the user output file descriptor as an array of two buffers. The first element of the buffer array contains the byte length of the serialized content (message length is in [Big Endian format](https://www.ibm.com/docs/en/epfz/5.3?topic=control-bigendian-littleendian-attributes)). The other element will be the serialized content.
+When sending messages to the users, the HotPocket DApp should serialize the message accordingly based on the type of the message and the protocol that is used (BSON or JSON). This serialized message is written into the user output file descriptor as an array of two buffers. The first element of the buffer array contains the byte length of the serialized content (message length is in [Big Endian format](https://www.ibm.com/docs/en/epfz/5.3?topic=control-bigendian-littleendian-attributes)). The other element will be the serialized content.
 
 ```
 [
@@ -112,7 +112,7 @@ Please refer the user protocol described in the [User Protocol](client-protocol)
 
 ## NPL (Node Party Line) channel
 
-The NPL channel is used to interchange messages between dapps running on each and every node in the [cluster](../../../platform/hotpocket/overview.md#hotpocket-cluster), where HotPocket acts as an intermediary. The dapp sends NPL messages to HotPocket via the NPL file descriptor, and HotPocket broadcasts the message to all the connected [UNL](../../../platform/hotpocket/consensus.md#unl---unique-node-list) nodes in the cluster. Furthermore, the NPL messages sent by other peers are also sent to the dapp from HotPocket using this file descriptor.<br><br> The NPL message can be in any format that needs to be transferred between peers. This channel can be used if we cannot assure that all the dapps in the cluster nodes are generating the same particular result (e.g.- random number). Hence, using this channel we can share the result between all the nodes and elect one result upon agreement.
+The NPL channel is used to interchange messages between DApps running on each and every node in the [cluster](../../../platform/hotpocket/overview.md#hotpocket-cluster), where HotPocket acts as an intermediary. The DApp sends NPL messages to HotPocket via the NPL file descriptor, and HotPocket broadcasts the message to all the connected [UNL](../../../platform/hotpocket/consensus.md#unl---unique-node-list) nodes in the cluster. Furthermore, the NPL messages sent by other peers are also sent to the DApp from HotPocket using this file descriptor.<br><br> The NPL message can be in any format that needs to be transferred between peers. This channel can be used if we cannot assure that all the DApps in the cluster nodes are generating the same particular result (e.g.- random number). Hence, using this channel we can share the result between all the nodes and elect one result upon agreement.
 
 ### Read NPL messages
 
@@ -122,9 +122,9 @@ Once a node receives NPL messages, the NPL inputs are fed into the contract as s
 
 ### Send NPL messages
 
-When sending a message, the content is written into the NPL file descriptor. This message length should also not exceed 128KB. You can write inputs such as text inputs and `JSON` objects (after converting into strings) to this file descriptor as buffers.
+When sending a message, the content is written into the NPL file descriptor. This message length should also not exceed 128KB. You can write inputs such as text inputs and `JSON` objects (after converting them into strings) to this file descriptor as buffers.
 
 ## Note :
 
 > The `patch.cfg` file -
-> In each consensus round, the contract block of _hp.cfg_ is synced with the peers in the cluster. The separated block is maintained inside the state directory of the node and is called the patch.cfg file. In some instances, we might need to update the patch.cfg and retrieve relevant configurations from that configuration file within the dapp.
+> In each consensus round, the contract block of _hp.cfg_ is synced with the peers in the cluster. The separated block is maintained inside the state directory of the node and is called the patch.cfg file. In some instances, we might need to update the patch.cfg and retrieve relevant configurations from that configuration file within the DApp.
