@@ -81,17 +81,21 @@ curl -fsSL https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resource
 
 ## Host Reputation
 - **Reputation Management:** Host reputation is dynamically adjusted based on specified guidelines, ensuring fairness and reliability within the Evernode network.
+- **Reputation Assessment Process:** The host must undergo a specific process to prove its active participation and earn rewards accordingly. The following link provides a detailed explanation of this process. However, it is not yet fully integrated into the Evernode Reward system. Once the model is stable, we will proceed with the integration.
+
+  - [Checkout Evernode Reputation Assessment](evernode-host-reputationd)
 - **Reward Eligibility:** Hosts with a reputation of 0 are not eligible for rewards in upcoming moments, incentivizing adherence to network standards.
-- **Reputation guidelines are rolled out in Sashimono v0.8.2**
-- **Your reputation will be set to 0 based on:**
+- **Reputation deduction criteria:** Your reputation will be reset to 0, if any of the following conditions are met.
+
   - Instance Count
-    - Once version 0.8.2 is rolled out, If your host has a capacity of less than 3 instances.
-  - Sanctioned Entities
-    - Once version 0.8.2 is rolled out, You won't be able to update your host or install a new host if your machine is from one of the **Sanctioned Entities** mentioned in [Evernode license](https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/license/evernode-license.pdf)
+    - If your host has a capacity of fewer than 3 instances. This means that the number of instances your host machine can support must be at least 3 to maintain a positive reputation.
+
   - Lease Amount
-    - Once version 0.8.2 is rolled out, If your lease fee is more than `(reward distribution for the moment / host count) * 110%`.
-  - Version Upgrade
-    - If you haven't updated to version 0.8.2 within **one week**
+    - If your lease fee is more than 110% of the average reward distribution per host. This is calculated using the formula: `(current reward distribution / total number of hosts) * 110%`. If your lease fee exceeds this amount, your reputation will be set to 0.
+
+**NOTES:** You won't be able to install a new host if your machine is from one of the **Sanctioned Entities** mentioned in the [Evernode license](https://raw.githubusercontent.com/EvernodeXRPL/evernode-test-resources/main/license/evernode-license.pdf).
+
+Ensure that your instance capacity and lease fees meet these criteria to maintain a positive reputation.
 
 ## Maintaining your host
 

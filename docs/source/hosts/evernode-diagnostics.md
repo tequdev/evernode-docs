@@ -101,3 +101,43 @@ Failed to retrieve the latest version data.
 ## 14. Re-config failure
 - If the `evernode config` command failed in any reconfiguration, retry executing it again.
 - If retry doesn't help change the value back to the original using the `evernode config` and change back to the new value again using the same command.
+
+## 15. Handling reputation assessment observations
+
+### a. Issues with Reputation Sending Every Other Hour.
+- Typically, a host that registers for a reputation assessment sends the reputation scores at the end of the assessment period.
+- If the host is part of a "bad universe" (a group of underperforming hosts), the reputation contract may fail to execute correctly or reach consensus.
+- As a result, the host may be unable to send scores for that assessment round.
+- This will cause the Evernode Reputation Hook to reject the transaction, even if the host was registered for that moment.
+- Consequently, the host will not be registered for the next moment, causing it to miss that assessment as well.
+- As the universe assignment is a random process, we do not have control over that, however, the model always tries to omit malfunctioning nodes.
+- This could also mean that you are a bad actor. When there's a reputation contract running on your machine (You can check by `evernode list` command).
+- Check HotPocket log by executing `cat /home/<user>/<name>/log/hp.log` command (Replace `user` and `name` respectively from the output of `evernode list`) and see it is completing consensus rounds using `****Ledger created****` log line.
+  - If it is reporting `Not enough peers` check whether your domain name is correct and peer ports are reachable by outside.
+- Check contract logs by `cat /home/<user>/<name>/log/contract/rw.stdout.log` and `cat /home/<user>/<name>/log/contract/rw.stderr.log`
+  - `rw.stdout.log` should print logs of hash file creation and JSON containing the received scores against the peer public keys in the cluster. It will forcefully terminate if your host lacks minimum requirements. (Let's refer to the minimum requirement section in evernode-host page [here](evernode-host.md/#system-requirements), and also add a point there that min requirement per instance should be `mentioned min req / 3 (min to receive rewards)` to be able to run a reputation contract properly).
+
+### b. Continuous Failures in Sending Reputation.
+- Continuous failures can occur due to insufficient XAH balance in the host reputation account, preventing the invocation of the Evernode Reputation Account.
+- Ensure that the host reputation account is adequately funded to avoid this issue.
+
+### c. No Relevant Instance Acquisition.
+- Insufficient EVR balance in the host reputation account can prevent the purchase of an instance of the host machine necessary for deploying the reputation contract.
+- Ensure that the host reputation account is sufficiently funded.
+- Additionally, if the host account has not offered leases for minted lease tokens, it will be considered inactive. The reputation service cannot acquire an instance without available offers at that time. Ensure that you create offers for the lease tokens using the `evernode offerlease` command.
+
+### d. Health of ReputationD Service
+- ReputationD is a `systemd` service running inside the host, responsible for managing reputation assessment-related operations.
+- You can check the status of this service using the following command:
+  ```bash
+  sudo -u sashireputationd XDG_RUNTIME_DIR="/run/user/$(id -u sashireputationd)" systemctl --user status sashimono-reputationd.service
+  ```
+- To analyze the logs related to this service, use the following command:
+  ```bash 
+  sudo -u sashireputationd bash -c 'journalctl --user -u sashimono-reputationd | tail -n <number of lines>'
+  ```
+- However, these commands are integrated into the `evernode reputationd status` and `evernode log` commands in an abstract manner.
+
+
+### e. When your host account's reputation score is zero
+- If your host account's reputation score is zero, it may lead to meeting conditions where the reputation value of the host is turned to zero. Please review the [reputation deduction criteria](evernode-host/#host-reputation) carefully.
