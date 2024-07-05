@@ -40,6 +40,16 @@ To install Evernode, your server must meet the following requirements:
 
 You can use a physical or virtual (VPS) Linux server as your Evernode host. **[WSL](https://docs.microsoft.com/en-us/windows/wsl/about) or [Containers](https://linuxcontainers.org/) are not supported**. It's recommended that you use a server that DOES NOT contain other workloads important to you. It's best if you can provision a fresh server from a cloud provider that you can dedicate to Evernode.
 
+### IPv4 requirement
+
+You are required to have IPv4 support in your VPS to install Evernode because all the HotPocket incoming connections are made through IPv4.
+
+But it's optional to have IPv6 support. Having IPv6 support lets you to allow IPv6 outgoing connections to the clusters hosted on your Host.
+
+Creating dApp on an IPv6-only instance would limit the contracts from connecting to the majority of IPv4 peers, which makes the host unreliable. Due to this nature if you support only IPv6 this would cause your reputation scores to sit at a lower value or even can be '0' due to the inability to reach your peers.
+
+If you don't have IPv4 support in your Host please follow [this guild](./configuration.md#enabling-ipv4-support) to set up IPv4.
+
 ### Domain name
 
 You must possess a domain name (eg. `myhost.myhosting.com`) which is used to reach your host. This is required for proper SSL support for communicating with smart contracts hosted in your host. Evernode uses [Let's Encrypt](https://letsencrypt.org/) for automatic free SSL setup for your domain name. Domain names that map to multiple IP addresses (round-robin DNS) should not be used.
