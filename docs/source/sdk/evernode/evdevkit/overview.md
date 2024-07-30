@@ -1,4 +1,4 @@
-# Evernode developer kit
+![image](https://github.com/user-attachments/assets/a4f4840b-aed6-4a52-b322-4846f2f72286)# Evernode developer kit
 Evernode uses HotPocket as its DApp engine. Once you have developed a HotPocket DApp on your PC, you can deploy it to the Evernode using Evernode developer kit.
 
 ## Installation
@@ -22,6 +22,8 @@ You can use the `evdevkit list` command to list active hosts from Evernode.
 ```
 evdevkit list
 ```
+Please note that this connects by default to `wss://xahau.network`. If you wish to use your own node then please specify Environment Variable `EV_XAHAUD_SERVER=wss://...`
+
 
 This command supports following options for sorting and filtering the output.
 
