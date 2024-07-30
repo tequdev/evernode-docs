@@ -61,8 +61,26 @@ evdevkit bundle $HOME/contract ed060a4aae0ec9183e4869e1490e908c9a9a3fd72816021c8
 You can upload your contract bundle to the Evernode instance
 - You are required to set `EV_USER_PRIVATE_KEY` [environment variable](#environment-variables) before uploading the contract.
 ```
-# evdevkit deploy <path to contract bundle> <IP of the instance> <User port of the instance>
+# evdevkit deploy <path to contract bundle> <domain / IP of the instance> <User port of the instance>
 evdevkit deploy $HOME/bundle/bundle.zip 45.76.238.97 26201
+```
+For clarity, suppose you got the following from acquiring an instance:
+```js
+{
+  name: "AC53DF1598E419E333F6304A0A5C7581599F20CCF5CF58312337AD0848A2E30D",
+  pubkey: "ed748d39effb987b34b4d205eef5e3bec7297d481c1f31fa283ca1637f8cb2d152",
+  contract_id: "03d85fbc-a8b2-42ba-923e-5a5a0406bb5e",
+  peer_port: 22862,
+  user_port: 26202,
+  gp_tcp_port: 36527,
+  gp_udp_port: 39066,
+  domain: "evernode.rocks",
+  created_timestamp: 1722320990329
+}
+```
+Then to deploy here you would run:
+```
+evdevkit deploy bundle.zip evernode.rocks 26202
 ```
 
 ### Changing tenant info
