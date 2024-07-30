@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a4f4840b-aed6-4a52-b322-4846f2f72286)# Evernode developer kit
+# Evernode developer kit
 Evernode uses HotPocket as its DApp engine. Once you have developed a HotPocket DApp on your PC, you can deploy it to the Evernode using Evernode developer kit.
 
 ## Installation
