@@ -55,3 +55,11 @@ External resources
    sdk/hotpocket/index
    sdk/evernode/index
    sdk/patterns/index
+
+.. toctree::
+   :titlesonly:
+   :hidden:
+   :caption: Libraries
+
+   Evernode JS Client <APIs/evernode-js-api>
+   Everpocket JS Client <APIs/everpocket-api>
