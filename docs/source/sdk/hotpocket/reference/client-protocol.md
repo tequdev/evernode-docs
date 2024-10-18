@@ -59,7 +59,7 @@ HotPocket will send back the status response with the details of the connected n
         "ledger_seq_no": <lcl sequence no>,
         "ledger_hash": "<lcl hash hex>",
         "vote_status": "synced" | "desync" | "unreliable",
-        "roundtime": <roundtime milliseconds>,
+        "round_time": <roundtime milliseconds>,
         "contract_execution_enabled": true | false,
         "read_requests_enabled": true | false,
         "is_full_history_node": true | false,
